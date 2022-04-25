@@ -1,0 +1,35 @@
+.page-enter-active
+{
+  animation: slideInRight 0.2s
+}
+.page-leave-active
+{
+  animation: fadeOut 1s
+}
+.nested-enter-active
+{
+  animation: slideInLeft 3s
+}
+.nested-leave-active
+{
+  animation: slideInLeft 3s
+}
+/* 
+.page-enter,
+.page-leave-active
+{
+  animation : slideInRight 
+}
+
+
+
+.layout-enter-active, 
+.layout-leave-active {
+  transition: opacity 0.2s
+}
+
+
+.layout-enter, 
+.layout-leave-active {
+  opacity: 0
+} */
