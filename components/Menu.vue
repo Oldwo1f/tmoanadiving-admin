@@ -92,32 +92,32 @@
       link:'/jeux',
       icon: 'sports_esports'
     },
-    {
-      label:"Catégorie",
-      link:'/jeux',
-      icon: 'category'
-    },
+    
     {
       label:"Partenaires",
       link:'/partenaires',
       icon: 'recent_actors'
     },
-
+    {
+      label:"Catégorie",
+      link:'/todo',
+      icon: 'category'
+    },
     {
       label:"Article",
-      link:'users',
+      link:'/todo',
       icon: 'description'
     },
     {
       label:"Commentaire",
-      link:'users',
+      link:'/todo',
       icon: 'question_answer'
     },
-    {
-      label:"Mediathèque",
-      link:'users',
-      icon: 'perm_media'
-    },
+    // {
+    //   label:"Mediathèque",
+    //   link:'users',
+    //   icon: 'perm_media'
+    // },
     {
       label:"Configuration",
       isTitle: true,
@@ -130,14 +130,14 @@
       collapsed:true,
       subitems : [
         {
-          label:"Utilisateurs56",
-          link:'users',
+          label:"Internationalisation",
+          link:'/todo',
           icon: 'people'
         },
         
         {
-          label:"Utilisateurs8",
-          link:'users',
+          label:"Paramètres",
+          link:'/todo',
           icon:'portrait'
         },
       ]
@@ -148,25 +148,25 @@
       icon:'portrait',
       collapsed:true,
     },
-    {
-      label:"Utilisateurs45",
-      link:'users',
-      icon:'portrait',
-      collapsed:true,
-      subitems : [
-        {
-          label:"Utilisateurs56",
-          link:'users',
-          icon: 'people'
-        },
+    // {
+    //   label:"Utilisateurs45",
+    //   link:'users',
+    //   icon:'portrait',
+    //   collapsed:true,
+    //   subitems : [
+    //     {
+    //       label:"Utilisateurs56",
+    //       link:'users',
+    //       icon: 'people'
+    //     },
         
-        {
-          label:"Utilisateurs8",
-          link:'users',
-          icon:'portrait'
-        },
-      ]
-    },
+    //     {
+    //       label:"Utilisateurs8",
+    //       link:'users',
+    //       icon:'portrait'
+    //     },
+    //   ]
+    // },
     {
       label:"",
       link:'users',

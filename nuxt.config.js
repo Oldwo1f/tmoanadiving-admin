@@ -3,7 +3,7 @@ import webpack from 'webpack'
 
 export default defineNuxtConfig({
   publicRuntimeConfig: {
-    apiURL: 'http://localhost:1337/api/v1/'
+    apiURL: process.env.API_URL + 'api/v1/'
   },
   ssr: false,
   bridge: {
@@ -56,6 +56,7 @@ export default defineNuxtConfig({
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -101,9 +102,9 @@ export default defineNuxtConfig({
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/auth/loginadmin', method: 'post', propertyName: 'token' },
+          login: { url: 'api/v1/auth/loginadmin', method: 'post', propertyName: 'token' },
           logout: false,
-          user: { url: '/auth/user', method: 'get' }
+          user: { url: 'api/v1/auth/user', method: 'get' }
         }
       },
       facebook: {
@@ -120,7 +121,7 @@ export default defineNuxtConfig({
     mode: 'no-cors',
     proxyHeaders: false,
     credentials: false,
-    baseURL: 'http://localhost:1337/api/v1/',
+    baseURL: process.env.API_URL + 'api/v1/',
 
     // headers: {
     //   common: {
