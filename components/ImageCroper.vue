@@ -104,7 +104,7 @@ const upload =  function(e){
 			console.log('mypayload createJeu');
 			console.log('');
 			console.log('fileinfo.name=',fileinfo.name);
-			 await $axios.post('http://localhost:1337/api/v1/'+props.itemType+'/'+props.itemId+'/add'+props.itemType2, fd).then(function (rep) {
+			 await $axios.post(process.env.API_URL + 'api/v1/'+props.itemType+'/'+props.itemId+'/add'+props.itemType2, fd).then(function (rep) {
 				console.log('rep axios', rep);
 				
 				if (rep.status === 200) {

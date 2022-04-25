@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>INDEX2</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut voluptas quia, dicta deserunt recusandae magni aliquam. Perferendis dolorem error explicabo id nulla voluptatum, culpa sed, debitis in unde, exercitationem molestias?</p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut voluptas quia, dicta deserunt recusandae magni aliquam. Perferendis dolorem error explicabo id nulla voluptatum, culpa sed, debitis in unde, exercitationem molestias?</p>
+    <h1>Dashboard</h1>
+    <p></p>
+    <p>à venir</p>
   </div>
 </template>
 

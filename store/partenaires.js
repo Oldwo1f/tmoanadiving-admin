@@ -93,7 +93,7 @@ export const actions = {
 		state.commit('setIsBusy', true)
 		console.log('payload', payload);
 		// setTimeout(async function () {
-		const partenaires = await axios.get('http://localhost:1337/api/v1/partenaires?archive=' + payload.archive)
+		const partenaires = await axios.get(process.env.API_URL + 'api/v1/partenaires?archive=' + payload.archive)
 
 		console.log('STORE ACTION');
 		state.commit('setPartenaires', partenaires.data)
@@ -105,7 +105,7 @@ export const actions = {
 	},
 	async fetchPartenaire(state, payload) {
 		console.log('mypayload', payload);
-		const partenaire = await axios.get('http://localhost:1337/api/v1/partenaire/' + payload.id)
+		const partenaire = await axios.get(process.env.API_URL + 'api/v1/partenaire/' + payload.id)
 
 		console.log('STORE ACTION setCurentPartenaire');
 		state.commit('setCurentPartenaire', partenaire.data)
@@ -117,7 +117,7 @@ export const actions = {
 		const partenaire = { ...state.state.currentPartenaire };
 		partenaire[payload.key] = payload.val
 		console.log('partenaire', partenaire);
-		const edit = await axios.patch('http://localhost:1337/api/v1/partenaire/' + partenaire.id, { datas: partenaire }).then(function (rep) {
+		const edit = await axios.patch(process.env.API_URL + 'api/v1/partenaire/' + partenaire.id, { datas: partenaire }).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -144,7 +144,7 @@ export const actions = {
 		// const jeu = { ...state.state.currentJeu };
 		// jeu[payload.key] = payload.val
 		// console.log('jeu', jeu);
-		const deleted = await axios.delete('http://localhost:1337/api/v1/partenaire/' + payload.id).then(function (rep) {
+		const deleted = await axios.delete(process.env.API_URL + 'api/v1/partenaire/' + payload.id).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -191,7 +191,7 @@ export const actions = {
 				break;
 		}
 
-		const edit = await axios.patch('http://localhost:1337/api/v1/partenaire/' + payload.id, { datas: { status: valueToupdate } }).then(function (rep) {
+		const edit = await axios.patch(process.env.API_URL + 'api/v1/partenaire/' + payload.id, { datas: { status: valueToupdate } }).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -216,7 +216,7 @@ export const actions = {
 
 		// return { toto: 'toto' }
 		console.log('mypayload createPartenaire', payload);
-		return await axios.post('http://localhost:1337/api/v1/partenaire', payload.value).then(function (rep) {
+		return await axios.post(process.env.API_URL + 'api/v1/partenaire', payload.value).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -266,7 +266,7 @@ export const actions = {
 		// const user = { ...state.state.currentUser };
 		// user[payload.key] = payload.val
 		// console.log('user', user);
-		const deleted = await axios.delete('http://localhost:1337/api/v1/image/' + payload.id).then(function (rep) {
+		const deleted = await axios.delete(process.env.API_URL + 'api/v1/image/' + payload.id).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 				console.log('state', state.state.currentPartenaire.images);
@@ -293,7 +293,7 @@ export const actions = {
 		// const user = { ...state.state.currentUser };
 		// user[payload.key] = payload.val
 		// console.log('user', user);
-		const deleted = await axios.delete('http://localhost:1337/api/v1/image/' + payload.id).then(function (rep) {
+		const deleted = await axios.delete(process.env.API_URL + 'api/v1/image/' + payload.id).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 				console.log('state', state.state.currentPartenaire.logos);
