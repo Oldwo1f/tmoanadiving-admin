@@ -110,7 +110,7 @@ const userLogin = async () => {
           console.log(response)
         } catch (err) {
           // console.log('err=',err)
-          console.log('err=',err.response)
+          console.log('err=',err)
           console.log('===>',err.response.data)
           $store.dispatch('global/alert', {
             text: err.response.data,

@@ -2,15 +2,16 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 import webpack from 'webpack'
 
 export default defineNuxtConfig({
+  nitro: {
+    port: 5000, // par défaut : 3000
+
+  },
+  port: 5000,
   publicRuntimeConfig: {
     apiURL: process.env.API_URL + 'api/v1/'
   },
   ssr: false,
-  server: {
-    port: process.env.PORT, // par défaut : 3000
-    host: '0.0.0.0', // par défaut : localhost,
-    timing: false
-  },
+
   bridge: {
     meta: true
   },
