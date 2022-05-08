@@ -2,17 +2,18 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 import webpack from 'webpack'
 
 export default defineNuxtConfig({
-  nitro: {
-    port: 5000, // par défaut : 3000
+  // nitro: {
+  //   port: 5000, // par défaut : 3000
 
-  },
-  port: 5000,
+  // },
+  // port: 5000,
   publicRuntimeConfig: {
     apiURL: process.env.API_URL + 'api/v1/'
   },
   ssr: false,
-
+  target: 'server',
   bridge: {
+    nitro: false,
     meta: true
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
