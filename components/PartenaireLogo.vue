@@ -5,7 +5,7 @@
 				
 				<h4 class="card-title">Logo</h4>
 				<div class="myflex">
-					<ImageCroper :itemId="state['partenaires']['currentPartenaire']['id']" itemType="partenaire" itemType2="Logo"  :imgwidth="300" :imgheight="200" :quality="2" />
+					<ImageCroper :itemId="state['partenaires']['currentPartenaire']['id']" itemType="partenaire" itemType2="Logo" updateStoreAction="updateLogo" storeproperty="currentPartenaire" storename="partenaires" :imgwidth="400" :imgheight="300" :quality="1" />
 					<LogoList storeproperty="currentPartenaire" storename="partenaires" name="logos" updateStoreAction="" deleteStoreAction="deleteOneLogo" />
 				</div>
 				

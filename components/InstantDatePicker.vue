@@ -59,9 +59,10 @@ console.log(props.storeproperty);
 console.log(props.storename);
 console.log(props.rules);
 console.log(props.inlinemode);
+// updateValue($dayjs().valueOf())
 
 const value = computed({
-		get:() =>  new Date(state[props.storename][props.storeproperty][props.name]),
+		get:() =>  state[props.storename][props.storeproperty][props.name] ? new Date(state[props.storename][props.storeproperty][props.name]) : new Date(),
 		set: (val) => { 
 			console.log('setVal',val);
 			console.log($dayjs(val).valueOf())
@@ -70,8 +71,8 @@ const value = computed({
 	})
 
 
-let model = ref()
-watchEffect(() => {console.log('watchEffect'); model.value= new Date(state[props.storename][props.storeproperty][props.name]);})
+// let model = ref()
+// watchEffect(() => {console.log('watchEffect'); model.value= new Date(state[props.storename][props.storeproperty][props.name]);})
 
 
 

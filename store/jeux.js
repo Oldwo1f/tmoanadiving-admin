@@ -71,6 +71,44 @@ export const mutations = {
 		console.log('setCurentJeuImages', payload);
 		state.currentJeu.images = payload;
 	},
+	setCurentJeuImagesGagnant(state, payload) {
+		console.log('setCurentJeuImagesGagnant', payload);
+		state.currentJeu.imagesgagnant = payload;
+	},
+	setCurentJeuImagesFin(state, payload) {
+		console.log('setCurentJeuImagesFin', payload);
+		state.currentJeu.imagesfin = payload;
+	},
+	setCurentJeuLogos(state, payload) {
+		console.log('setCurentJeuLogos', payload);
+		state.currentJeu.logos = payload;
+	},
+	setCurentJeuLogosPush(state, payload) {
+		console.log('setCurentJeuLogos', payload);
+		state.currentJeu.logos.push(payload);
+	},
+	setCurentJeuImagesPush(state, payload) {
+		console.log('setCurentJeuimages', payload);
+		state.currentJeu.images.push(payload);
+	},
+	setCurentJeuImagesFinPush(state, payload) {
+		console.log('setCurentJeuimagesFin', payload);
+		state.currentJeu.imagesfin.push(payload);
+	},
+	setCurentJeuImagesGagnantPush(state, payload) {
+		console.log('setCurentJeuimagesGagnant', payload);
+		state.currentJeu.imagesgagnant.push(payload);
+	},
+
+	setCurentGagnant(state, payload) {
+		console.log('setCurentGagnant', payload);
+		state.currentJeu.winnerlastname = payload.lastName;
+		state.currentJeu.winnerfirstname = payload.firstName;
+		state.currentJeu.winneremail = payload.email;
+		state.currentJeu.winnercity = payload.city;
+
+		console.log(state.currentJeu);
+	},
 	setIsBusy(state, payload) {
 		console.log('setIsBusy', payload);
 		state.isBusy = payload;
@@ -89,7 +127,7 @@ export const actions = {
 		state.commit('setIsBusy', true)
 		console.log('payload', payload);
 		// setTimeout(async function () {
-		const jeux = await axios.get(process.env.API_URL + 'api/v1/jeux?archive=' + payload.archive)
+		const jeux = await axios.get(process.env.API_URL + 'jeux?archive=' + payload.archive)
 
 		console.log('STORE ACTION');
 		state.commit('setJeux', jeux.data)
@@ -101,7 +139,7 @@ export const actions = {
 	},
 	async fetchJeu(state, payload) {
 		console.log('mypayload', payload);
-		const jeu = await axios.get(process.env.API_URL + 'api/v1/jeu/' + payload.id)
+		const jeu = await axios.get(process.env.API_URL + 'jeu/' + payload.id)
 
 		console.log('STORE ACTION setCurentJeu');
 		state.commit('setCurentJeu', jeu.data)
@@ -113,7 +151,7 @@ export const actions = {
 		const jeu = { ...state.state.currentJeu };
 		jeu[payload.key] = payload.val
 		console.log('jeu', jeu);
-		const edit = await axios.patch(process.env.API_URL + 'api/v1/jeu/' + jeu.id, { datas: jeu }).then(function (rep) {
+		const edit = await axios.patch(process.env.API_URL + 'jeu/' + jeu.id, { datas: jeu }).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -123,6 +161,7 @@ export const actions = {
 				console.log('index=', index);
 				jeux.splice(index, 1, rep.data);
 				state.commit('setJeux', jeux)
+
 				state.commit('setCurentJeu', rep.data)
 
 				state.dispatch('global/alert', {
@@ -140,7 +179,7 @@ export const actions = {
 		// const jeu = { ...state.state.currentJeu };
 		// jeu[payload.key] = payload.val
 		// console.log('jeu', jeu);
-		const deleted = await axios.delete(process.env.API_URL + 'api/v1/jeu/' + payload.id).then(function (rep) {
+		const deleted = await axios.delete(process.env.API_URL + 'jeu/' + payload.id).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -187,7 +226,7 @@ export const actions = {
 				break;
 		}
 
-		const edit = await axios.patch(process.env.API_URL + 'api/v1/jeu/' + payload.id, { datas: { status: valueToupdate } }).then(function (rep) {
+		const edit = await axios.patch(process.env.API_URL + 'jeu/' + payload.id, { datas: { status: valueToupdate } }).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -207,12 +246,44 @@ export const actions = {
 			}
 		})
 	},
+	async updateLogo(state, payload) {
+		console.log('updateLogo===>>>><', payload);
+
+
+		state.commit('setCurentJeuLogosPush', payload)
+
+
+	},
+	async updateImage(state, payload) {
+		console.log('updateImage===>>>><', payload);
+
+
+		state.commit('setCurentJeuImagesPush', payload)
+
+
+	},
+	async updateImagesFin(state, payload) {
+		console.log('updateImageFin===>>>><', payload);
+
+
+		state.commit('setCurentJeuImagesFinPush', payload)
+
+
+	},
+	async updateImagesGagnant(state, payload) {
+		console.log('updateImageGagnant===>>>><', payload);
+
+
+		state.commit('setCurentJeuImagesGagnantPush', payload)
+
+
+	},
 
 	async createJeu(state, payload) {
 
 		// return { toto: 'toto' }
 		console.log('mypayload createJeu', payload);
-		return await axios.post(process.env.API_URL + 'api/v1/jeu', payload.value).then(function (rep) {
+		return await axios.post(process.env.API_URL + 'jeu', payload.value).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -255,6 +326,31 @@ export const actions = {
 		)
 	},
 
+	async tirage(state, payload) {
+		console.log('mypayload tirage', payload);
+		console.log(state);
+		const jeu = { ...state.state.currentJeu };
+		// console.log(state.state.currentUser);
+		// const user = { ...state.state.currentUser };
+		// user[payload.key] = payload.val
+		// console.log('user', user);
+		const result = await axios.get(process.env.API_URL + 'jeu/tirage/' + jeu.id).then(function (rep) {
+			console.log('rep axios', rep);
+			if (rep.status === 200) {
+
+				state.commit('setCurentGagnant', rep.data)
+
+				state.dispatch('global/alert', {
+					text: 'Tirage au sort effectué',
+					variant: 'success',
+					countDown: 5
+				}, { root: true })
+
+			}
+		})
+
+		return result
+	},
 	async removeOneImage(state, payload) {
 		console.log('mypayload removeOneImage', payload);
 		console.log(state);
@@ -262,7 +358,7 @@ export const actions = {
 		// const user = { ...state.state.currentUser };
 		// user[payload.key] = payload.val
 		// console.log('user', user);
-		const deleted = await axios.delete(process.env.API_URL + 'api/v1/image/' + payload.id).then(function (rep) {
+		const deleted = await axios.delete(process.env.API_URL + 'image/' + payload.id).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 				console.log('state', state.state.currentJeu.images);
@@ -282,24 +378,75 @@ export const actions = {
 			}
 		})
 	},
-	async removeOneLogo(state, payload) {
-		console.log('mypayload removeOneLogo', payload);
-		console.log(state);
+	async removeOneImageFin(state, payload) {
+		console.log('mypayload removeOneImageFin', payload);
 		// console.log(state.state.currentUser);
 		// const user = { ...state.state.currentUser };
 		// user[payload.key] = payload.val
 		// console.log('user', user);
-		const deleted = await axios.delete(process.env.API_URL + 'api/v1/image/' + payload.id).then(function (rep) {
+		const deleted = await axios.delete(process.env.API_URL + 'image/' + payload.id).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
-				console.log('state', state.state.currentJeu.images);
-				const imageList = [...state.state.currentJeu.images];
+				console.log('state', state.state.currentJeu.imagesfin);
+				const imageList = [...state.state.currentJeu.imagesfin];
 				console.log('IMGLIST', imageList);
 
 				var index = _.findIndex(imageList, { id: rep.data });
 				console.log('index=', index);
 				imageList.splice(index, 1);
-				state.commit('setCurentJeuImages', imageList)
+				state.commit('setCurentJeuImagesFin', imageList)
+
+				state.dispatch('global/alert', {
+					text: 'Image supprimé',
+					variant: 'success',
+					countDown: 2
+				}, { root: true })
+			}
+		})
+	},
+	async removeOneImageGagnant(state, payload) {
+		console.log('mypayload removeOneImageGagnant', payload);
+		// console.log(state.state.currentUser);
+		// const user = { ...state.state.currentUser };
+		// user[payload.key] = payload.val
+		// console.log('user', user);
+		const deleted = await axios.delete(process.env.API_URL + 'image/' + payload.id).then(function (rep) {
+			console.log('rep axios', rep);
+			if (rep.status === 200) {
+				console.log('state', state.state.currentJeu.imagesgagnant);
+				const imageList = [...state.state.currentJeu.imagesgagnant];
+				console.log('IMGLIST', imageList);
+
+				var index = _.findIndex(imageList, { id: rep.data });
+				console.log('index=', index);
+				imageList.splice(index, 1);
+				state.commit('setCurentJeuImagesGagnant', imageList)
+
+				state.dispatch('global/alert', {
+					text: 'Image supprimé',
+					variant: 'success',
+					countDown: 2
+				}, { root: true })
+			}
+		})
+	},
+	async removeOneLogo(state, payload) {
+		console.log('mypayload removeOneLogo', payload);
+		// console.log(state.state.currentUser);
+		// const user = { ...state.state.currentUser };
+		// user[payload.key] = payload.val
+		// console.log('user', user);
+		const deleted = await axios.delete(process.env.API_URL + 'image/' + payload.id).then(function (rep) {
+			console.log('rep axios', rep);
+			if (rep.status === 200) {
+				console.log('state', state.state.currentJeu.images);
+				const imageList = [...state.state.currentJeu.logos];
+				console.log('IMGLIST', imageList);
+
+				var index = _.findIndex(imageList, { id: rep.data });
+				console.log('index=', index);
+				imageList.splice(index, 1);
+				state.commit('setCurentJeuLogos', imageList)
 
 				state.dispatch('global/alert', {
 					text: 'Image supprimé',

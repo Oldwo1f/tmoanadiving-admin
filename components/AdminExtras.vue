@@ -1,7 +1,7 @@
 <template>
 	<div class="masonryBlock">
 		<b-modal id="modalResetPassord" header-bg-variant="danger" @ok="modalConfirmed"
-      header-text-variant="white" centered size="sm" title="Êtes vous sûre ?"  ok-title="Oui. Je suis sûre" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
+      header-text-variant="white" centered size="sm" title="Êtes vous sûr ?"  ok-title="Oui. Je suis sûr" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
     <p style="text-align:center;margin-bottom:0px;">De vouloir réinitialiser le mot de passe de l'administrateur ?</p>
   </b-modal>
 	<div class="card">

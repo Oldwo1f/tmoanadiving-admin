@@ -8,10 +8,10 @@ export default defineNuxtConfig({
   // },
   // port: 5000,
   publicRuntimeConfig: {
-    apiURL: process.env.API_URL + 'api/v1/'
+    apiURL: process.env.API_URL
   },
   ssr: false,
-  target: 'server',
+  target: 'static',
   bridge: {
     nitro: false,
     meta: true
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@100;400;700;900&display=swap",
@@ -41,7 +41,8 @@ export default defineNuxtConfig({
     '~assets/css/font.css',
     '~assets/css/table.css',
     '~assets/css/transition.css',
-    'animate.css/animate.compat.css'
+    'animate.css/animate.compat.css',
+    '@mdi/font/css/materialdesignicons.min.css',
   ],
   // pageTransition: 'fade',
   // transition: {
@@ -55,6 +56,7 @@ export default defineNuxtConfig({
     '~plugins/scrollbar.js',
     '~plugins/jsontocsv.js',
     '~plugins/croppa.js',
+    '~plugins/formatnumber.js',
     { src: '~/plugins/veevalidate.js', ssr: true },
   ],
 
@@ -69,10 +71,13 @@ export default defineNuxtConfig({
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     'nuxt-material-design-icons-iconfont',
+
+    // 'nuxt-material-design-icons',
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/dayjs',
+    'vue-social-sharing/nuxt',
   ],
 
   dayjs: {
@@ -109,9 +114,9 @@ export default defineNuxtConfig({
           autoFetch: true
         },
         endpoints: {
-          login: { url: 'api/v1/auth/loginadmin', method: 'post', propertyName: 'token' },
+          login: { url: 'auth/loginadmin', method: 'post', propertyName: 'token' },
           logout: false,
-          user: { url: 'api/v1/auth/user', method: 'get' }
+          user: { url: 'auth/user', method: 'get' }
         }
       },
       facebook: {
@@ -128,13 +133,12 @@ export default defineNuxtConfig({
     mode: 'no-cors',
     proxyHeaders: false,
     credentials: false,
-    baseURL: process.env.API_URL + 'api/v1/',
-
+    baseURL: process.env.API_URL,
     // headers: {
     //   common: {
-    //     'Access-Control-Allow-Headers': 'access-control-allow-headers, application/json, text/plain, */*, Authorization'
-    //   }
-    // },
+    //     'Access-Control-Allow-Origin': '*'
+    //   },
+    // }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

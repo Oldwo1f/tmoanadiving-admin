@@ -8,7 +8,7 @@
 			:height="imgheight"
 			:quality="quality"
 			placeholder="Choisir une image"
-			accept="image/x-png,image/gif,image/jpeg"
+			accept="image/*"
          :file-size-limit="0"
          @file-type-mismatch="onFileTypeMismatch"
          @file-size-exceed="onFileSizeExceed"
@@ -39,7 +39,13 @@
 const { $store,$axios } = useNuxtApp()
 const state = $store.state;
 const props = defineProps({
-  itemId: { type:String,
+  updateStoreAction: { type:String,
+		 default:''
+  },storeproperty: { type:String,
+		 default:''
+  },storename: { type:String,
+		 default:''
+  },itemId: { type:String,
 		 default:''
   },itemType: { type:String,
 		 default:''
@@ -104,12 +110,18 @@ const upload =  function(e){
 			console.log('mypayload createJeu');
 			console.log('');
 			console.log('fileinfo.name=',fileinfo.name);
-			 await $axios.post(process.env.API_URL + 'api/v1/'+props.itemType+'/'+props.itemId+'/add'+props.itemType2, fd).then(function (rep) {
+			 await $axios.post(process.env.API_URL + ''+props.itemType+'/'+props.itemId+'/add'+props.itemType2, fd).then(function (rep) {
 				console.log('rep axios', rep);
+
+				console.log('props.itemType==', props.itemType);
+				console.log('props.itemId==', props.itemId);
+				console.log('props.itemType2==', props.itemType2);
 				
 				if (rep.status === 200) {
 					hasimage.value=false;
 					myCroppa.value.remove()
+
+					$store.dispatch(props.storename +'/'+ props.updateStoreAction,rep.data)
 
 				}
 

@@ -12,11 +12,19 @@
           <p>{{item}} - {{index}}</p>
         </div> -->
 		<JeuMainInfo  />
+		<JeuQuestion  />
+		<JeuLogo  />
 		<JeuMainImage  />
+		<JeuImageFin  />
 		<JeuMainContent />
-		<!-- <JeuMobileImage  /> -->
-		<JeuGagnant   v-if="jeu.dateTirage < $dayjs().valueOf()"/>
+		<JeuFinalContent />
 		<JeuOptions />
+		<JeuReglement />
+		<JeuInscrits />
+		<JeuDeinscrits />
+		<!-- <JeuMobileImage  /> -->
+		<JeuGagnant  />
+		
 	</masonry>
       </div>
 	<!-- </ClientOnly> -->

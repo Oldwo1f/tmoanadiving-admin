@@ -2,7 +2,6 @@
 <div id="background">
     <Menu ></Menu>
     <Header></Header>
-
     <div id="content" :class="{collapsed:state.global.menuCollapsed}">
         <perfect-scrollbar>
             <div class="contentPadding">

@@ -5,7 +5,7 @@
 <div class="panelContainer" :class="{secondary : route.path !=='/administrators'}">
   <!-- <div class="absoluteTest"></div> -->
   <b-modal id="modalRemove" header-bg-variant="danger" @ok="modalConfirmed"
-      header-text-variant="white" centered size="sm" title="Êtes vous sûre?"  ok-title="Oui. Je suis sûre" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
+      header-text-variant="white" centered size="sm" title="Êtes vous sûr?"  ok-title="Oui. Je suis sûr" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
     <p style="text-align:center;margin-bottom:0px;">Supprimer définitivement <br> l'administrateur ?</p>
   </b-modal>
   <b-modal id="modalAddAdmin" ref="closemodal" header-bg-variant="primary"

@@ -1,33 +1,48 @@
-
-  .table-responsive{
-	border-left:0px;
-  }
-  .b-table-sticky-header > .table.b-table > thead > tr > th{
-	border-right:1px ridge lightgray !important;
-	/* background:red; */
-	/* position:static; */
-  }
-  
-
-  .dropdownIcon .dropdown-toggle {
-    padding: 0.25rem;
-    display: inline-flex;
+.table-responsive {
+  border-left: 0px;
 }
-td.statusCol{
+
+.b-table-sticky-header>.table.b-table>thead>tr>th {
+  border-right: 1px ridge lightgray !important;
+  /* background:red; */
+  /* position:static; */
+}
+
+
+.dropdownIcon .dropdown-toggle {
+  padding: 0.25rem;
+  display: inline-flex;
+}
+
+td.dateCol {
   text-align: center;
-  width:40px;
+  width: 150px;
 }
-td.actionsCol{width:25px;
+
+td.phoneCol {
+  text-align: center;
+  width: 100px;
 }
-.table td{
+
+td.statusCol {
+  text-align: center;
+  width: 40px;
+}
+
+td.actionsCol {
+  width: 25px;
+}
+
+.table td {
   vertical-align: middle;
 }
 
-.dropdownbtn{
-  margin-bottom: 0;cursor: pointer;
+.dropdownbtn {
+  margin-bottom: 0;
+  cursor: pointer;
 }
 
-span.errors{
-  color:red;
+span.errors {
+  color: red;
   font-size: 10px;
 }

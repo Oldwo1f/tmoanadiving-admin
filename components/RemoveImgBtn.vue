@@ -8,7 +8,7 @@
 	</span>
 </b-button>		
 <b-modal id="modal-1" header-bg-variant="danger" @ok="modalConfirmed"
-      header-text-variant="white" centered size="sm" title="Etes vous sûre?"  ok-title="Oui. Je suis sûre" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
+      header-text-variant="white" centered size="sm" title="Etes vous sûr?"  ok-title="Oui. Je suis sûr" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
     <p style="text-align:center;margin-bottom:0px;">Supprimer définitivement <br> l'utilisateur ?</p>
   </b-modal>
 </div>

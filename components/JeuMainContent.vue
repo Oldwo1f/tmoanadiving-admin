@@ -3,7 +3,7 @@
 	<div class="card">
 			<div class="card-body">
 				
-			<h4 class="card-title">Contenu</h4>
+			<h4 class="card-title">Description du jeu</h4>
 			<!-- <vue-editor v-model="form.descriptionoffre"></vue-editor> -->
 			<InstantEditor  rules=""  placeholder="Description du jeu" name="description" storename="jeux" storeproperty="currentJeu" updateStoreAction="updateCurrentJeu"/>
 			</div>

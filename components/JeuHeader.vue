@@ -15,6 +15,7 @@
 						</span>
 					</div>
 					<div class="right">
+						<b-btn :href="'https://playstar-tahiti.com/jeux/' +jeu.url" target="_BLANK" style ="margin-right : 20px;" variant="info">Preview</b-btn>
 						<InstantRadio 
 						:options="[{ text: 'Actif', value: 'actif'},{ text: 'Brouillon', value: 'draft'}, { text: 'Inactif', value: 'inactif'}, { text: 'Archive', value: 'archive' }]"
 						name="status" storename="jeux" storeproperty="currentJeu" updateStoreAction="updateCurrentJeu" />

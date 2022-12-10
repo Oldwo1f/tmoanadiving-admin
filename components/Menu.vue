@@ -1,8 +1,10 @@
 <template>
   <div id="menu" :class="{collapsed:state.global.menuCollapsed}">
     <div class="head">
-      <div class="mainLogo">a</div>
-      <div class="mainLogoText" v-if="!state.global.menuCollapsed">MADMIN</div>
+      <div class="mainLogo">
+
+      </div>
+      <div class="mainLogoText" v-if="!state.global.menuCollapsed">CREADMIN</div>
     </div>
     <div class="menu">
       <perfect-scrollbar>
@@ -14,7 +16,8 @@
           </div>
           <div v-if="!item.isTitle && !item.subitems" class="menuSingle" >
             <nuxt-link :to="item.link" >
-              <span class="material-icons" :title="item.label">{{item.icon}}</span> 
+              <!-- <span class="material-icons" :title="item.label">{{item.icon}}</span>  -->
+              <span class="mdi" :class="item.icon" :title="item.label"></span> 
               <label for="" v-if="!state.global.menuCollapsed">{{item.label}}</label>
             </nuxt-link>
           </div>
@@ -40,7 +43,7 @@
       </ul>
       </perfect-scrollbar>
       <div class="bottom">
-        <span class="version">V 0.55</span>
+        <span class="version">V 1.55</span>
       </div>
     </div>
   </div>
@@ -61,58 +64,78 @@
       console.log(v.label, v.collapsed);
      
    });
-    item.collapsed = !oldvalue;
-  console.log('item.collapsed',item.collapsed);
+     item.collapsed = !oldvalue;
+    console.log('item.collapsed',item.collapsed);
 
   }
   const menuItems = ref([
-    {
-      label:"Général",
-      isTitle: true,
-      isHR:false
-    },
-    {
-      label:"Dashboard",
-      link:'/',
-      icon: 'web'
-    },
+    // {
+    //   label:"Général",
+    //   isTitle: true,
+    //   isHR:false
+    // },
+    // {
+    //   label:"Dashboard",
+    //   link:'/',
+    //   icon: 'web'
+    // },
     
     {
       label:"Utilisateurs",
       link:'/users',
-      icon:'people'
+      icon:'mdi-account-group'
     },
     {
       label:"contenus",
       isTitle: true,
       isHR:true
     },
-    {
-      label:"Jeux",
-      link:'/jeux',
-      icon: 'sports_esports'
-    },
+    // {
+    //   label:"Jeux",
+    //   link:'/jeux',
+    //   icon: 'sports_esports'
+    // },
     
     {
       label:"Partenaires",
       link:'/partenaires',
-      icon: 'recent_actors'
+      icon: 'mdi-diving-snorkel'
     },
     {
-      label:"Catégorie",
-      link:'/todo',
-      icon: 'category'
+      label:"Pass Temoana",
+      link:'/passes',
+      icon: 'mdi-card-account-details-star-outline'
     },
     {
-      label:"Article",
-      link:'/todo',
-      icon: 'description'
+      label:"Plongées",
+      link:'/plongees',
+      icon: 'mdi-diving-scuba-tank'
     },
     {
-      label:"Commentaire",
-      link:'/todo',
-      icon: 'question_answer'
+      label:"Factures",
+      link:'/factures',
+      icon: 'mdi-file-table-outline'
     },
+    // {
+    //   label:"Catégorie",
+    //   link:'/todo',
+    //   icon: 'category'
+    // },
+    // {
+    //   label:"Article",
+    //   link:'/todo',
+    //   icon: 'description'
+    // },
+    // {
+    //   label:"Commentaire",
+    //   link:'/todo',
+    //   icon: 'question_answer'
+    // },
+    // {
+    //   label:"Pages",
+    //   link:'/pages',
+    //   icon: 'description'
+    // },
     // {
     //   label:"Mediathèque",
     //   link:'users',
@@ -123,29 +146,29 @@
       isTitle: true,
       isHR:true
     },
-    {
-      label:"Configurations",
-      link:'users',
-      icon: 'settings',
-      collapsed:true,
-      subitems : [
-        {
-          label:"Internationalisation",
-          link:'/todo',
-          icon: 'people'
-        },
+    // {
+    //   label:"Configurations",
+    //   link:'users',
+    //   icon: 'settings',
+    //   collapsed:true,
+    //   subitems : [
+    //     {
+    //       label:"Internationalisation",
+    //       link:'/todo',
+    //       icon: 'people'
+    //     },
         
-        {
-          label:"Paramètres",
-          link:'/todo',
-          icon:'portrait'
-        },
-      ]
-    },
+    //     {
+    //       label:"Paramètres",
+    //       link:'/options',
+    //       icon:'portrait'
+    //     },
+    //   ]
+    // },
     {
       label:"Administrateurs",
       link:'/administrators',
-      icon:'portrait',
+      icon:'mdi-account-box-outline',
       collapsed:true,
     },
     // {
@@ -204,19 +227,23 @@
   justify-content: center;
 
   .mainLogo{
-    height : 40px;
-  color:@menuTextColor;
-  font-family: Mom;
-  font-size: 40px;
-  line-height: 45px;
-  
+    // height : 40px;
+  // color:@menuTextColorSecondary;
+  // font-family: Mom;
+  // font-size: 40px;
+  // line-height: 45px;
+  width:40px;
+  height:40px;
+  background:url('assets/images/crealogo.png') left center no-repeat;
+  background-size: contain;
+  // box-shadow:5px 5px 15px black;
 }
   .mainLogoText{
   margin-left: 10px;
 
   font-weight: bold;
   text-transform: uppercase;
-  color:@menuTextColor;
+  color:@menuTextColorSecondary;
   font-family: Poppins;
   font-size: 12px;
   font-weight: 600;
@@ -283,7 +310,7 @@
       right: 10px;
       top: 12px;
       cursor: pointer;
-      .material-icons{
+      .mdi{
         font-size: 18px;   
       }
     }
@@ -420,6 +447,9 @@
     font-size: 12px;
     text-align: center;
     width: 100%;
+}
+.mdi{
+  font-size: 24px;
 }
 
 </style>

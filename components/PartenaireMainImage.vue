@@ -4,7 +4,7 @@
 			<div class="card-body">
 				
 				<h4 class="card-title">Images</h4>
-				<ImageCroper :itemId="state['partenaires']['currentPartenaire']['id']" itemType="partenaire" :imgwidth="400" :imgheight="300" :quality="5" />
+				<ImageCroper :itemId="state['partenaires']['currentPartenaire']['id']" itemType="partenaire" updateStoreAction="updateImage" storeproperty="currentPartenaire" storename="partenaires" :imgwidth="400" :imgheight="300" :quality="5" />
 				<ImageList storeproperty="currentPartenaire" storename="partenaires" name="images" updateStoreAction="" deleteStoreAction="deleteOneImage" />
 			</div>
 	</div>

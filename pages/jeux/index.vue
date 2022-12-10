@@ -5,7 +5,7 @@
 <div class="panelContainer" :class="{secondary : route.path !=='/jeux'}">
   <!-- <div class="absoluteTest"></div> -->
   <b-modal id="modalRemove" header-bg-variant="danger" @ok="modalConfirmed"
-      header-text-variant="white" centered size="sm" title="Êtes vous sûre?"  ok-title="Oui. Je suis sûre" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
+      header-text-variant="white" centered size="sm" title="Êtes vous sûr?"  ok-title="Oui. Je suis sûr" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
     <p style="text-align:center;margin-bottom:0px;">Supprimer définitivement <br> l'utilisateur ?</p>
   </b-modal>
   <b-modal id="modalAddJeu" ref="closemodal" header-bg-variant="primary"
@@ -138,7 +138,7 @@
           html="<span class='material-icons'>more_vert</span>" >
             <b-dropdown-item  v-if="data.item.status=='inactif' || data.item.status=='draft'" @click="updateStatusItem(data.item.id, 'activer')">Activer</b-dropdown-item>
             <b-dropdown-item  v-if="data.item.status=='actif'" @click="updateStatusItem(data.item.id, 'desactiver')">Désactiver</b-dropdown-item>
-            <b-dropdown-item :to="'users/'+data.item.id">Editer</b-dropdown-item>
+            <b-dropdown-item :to="'jeux/'+data.item.id">Editer</b-dropdown-item>
             <b-dropdown-item  v-if="data.item.status=='archive'" @click="updateStatusItem(data.item.id, 'desarchiver')">Désarchiver</b-dropdown-item>
             <b-dropdown-item v-else @click="updateStatusItem(data.item.id,'archiver')">Archiver</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
@@ -149,9 +149,22 @@
 						
 						
 					</div>
+			 
+         
 					
 					
-					
+			</template>
+      <template #cell(dateLancement)="data">
+					<!-- <nuxt-link to="/"> -->
+					<span>{{$dayjs(data.item.dateLancement).format('DD/MM/YYYY')}}</span>
+			</template>
+      <template #cell(inscrits)="data">
+					<!-- <nuxt-link to="/"> -->
+					<strong>{{data.item.inscrits.length}}</strong>
+			</template>
+      <template #cell(dateCloture)="data">
+					<!-- <nuxt-link to="/"> -->
+					<span>{{$dayjs(data.item.dateCloture).format('DD/MM/YYYY')}}</span>
 			</template>
 			  </b-table>
             </div>
@@ -342,6 +355,24 @@ const  fields= [
             key: 'name',
             label: 'Nom',
             sortable: true,
+          },
+          {
+            key: 'inscrits',
+            label: 'Inscrits',
+            sortable: true,
+            class:"statusCol"
+          },
+          {
+            key: 'dateLancement',
+            label: 'Lancement',
+            sortable: true,
+            class:"dateCol"
+          },
+          {
+            key: 'dateCloture',
+            label: 'Cloture',
+            sortable: true,
+            class:"dateCol"
           },
           {
             key: 'status',

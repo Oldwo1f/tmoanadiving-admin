@@ -85,7 +85,7 @@ export const actions = {
 		state.commit('setIsBusy', true)
 		console.log('payload', payload);
 		// setTimeout(async function () {
-		const users = await axios.get(process.env.API_URL + 'api/v1/users?archive=' + payload.archive)
+		const users = await axios.get(process.env.API_URL + 'users?archive=' + payload.archive)
 
 		console.log('STORE ACTION');
 		state.commit('setUsers', users.data)
@@ -97,7 +97,7 @@ export const actions = {
 	},
 	async fetchUser(state, payload) {
 		console.log('mypayload', payload);
-		const user = await axios.get(process.env.API_URL + 'api/v1/user/' + payload.id)
+		const user = await axios.get(process.env.API_URL + 'user/' + payload.id)
 
 		console.log('STORE ACTION setCurentUser');
 		state.commit('setCurentUser', user.data)
@@ -109,7 +109,7 @@ export const actions = {
 		const user = { ...state.state.currentUser };
 		user[payload.key] = payload.val
 		console.log('user', user);
-		const edit = await axios.patch(process.env.API_URL + 'api/v1/user/' + user.id, { datas: user }).then(function (rep) {
+		const edit = await axios.patch(process.env.API_URL + 'user/' + user.id, { datas: user }).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -136,7 +136,7 @@ export const actions = {
 		// const user = { ...state.state.currentUser };
 		// user[payload.key] = payload.val
 		// console.log('user', user);
-		const deleted = await axios.delete(process.env.API_URL + 'api/v1/user/' + payload.id).then(function (rep) {
+		const deleted = await axios.delete(process.env.API_URL + 'user/' + payload.id).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -183,7 +183,7 @@ export const actions = {
 				break;
 		}
 
-		const edit = await axios.patch(process.env.API_URL + 'api/v1/user/' + payload.id, { datas: { status: valueToupdate } }).then(function (rep) {
+		const edit = await axios.patch(process.env.API_URL + 'user/' + payload.id, { datas: { status: valueToupdate } }).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -205,7 +205,7 @@ export const actions = {
 	},
 	async resetPassword(state, payload) {
 		console.log('mypayload resetPassword', payload);
-		const edit = await axios.patch(process.env.API_URL + 'api/v1/user/resetPassword/' + payload.id, {}).then(function (rep) {
+		const edit = await axios.patch(process.env.API_URL + 'user/resetPassword/' + payload.id, {}).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -229,7 +229,7 @@ export const actions = {
 
 		// return { toto: 'toto' }
 		console.log('mypayload createUser', payload);
-		return await axios.post(process.env.API_URL + 'api/v1/user', payload.value).then(function (rep) {
+		return await axios.post(process.env.API_URL + 'user', payload.value).then(function (rep) {
 			console.log('rep axios', rep);
 			if (rep.status === 200) {
 
@@ -239,7 +239,7 @@ export const actions = {
 				// console.log('index=', index);
 				// users.splice(index, 1, rep.data);
 				// state.commit('setUsers', users)
-				// state.commit('setCurentUser', rep.data)
+				state.commit('setCurentUser', rep.data)
 
 				state.dispatch('global/alert', {
 					text: 'Utilisateur ajouté',

@@ -1,7 +1,7 @@
 <template>
 <div>
 	<b-modal id="modalRemove" header-bg-variant="danger" @ok="modalConfirmed"
-		header-text-variant="white" centered size="sm" title="Êtes vous sûre?"  ok-title="Oui. Je suis sûre" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
+		header-text-variant="white" centered size="sm" title="Êtes vous sûr?"  ok-title="Oui. Je suis sûr" ok-variant="success" cancel-title="Annuler" cancel-variant="danger">
 		<p style="text-align:center;margin-bottom:0px;">Supprimer définitivement <br> l'image ?</p>
 	</b-modal>
 	<div class="ImageListContainer">
@@ -38,7 +38,7 @@ const props = defineProps({
 		 default:'yeah'
   },
 })
-let idToRemove= 'toto';
+let idToRemove= '';
 const images = computed({
 		get:() =>  state[props.storename][props.storeproperty][props.name],
 		set: (val) => { console.log('setVal',val);},
@@ -75,7 +75,7 @@ const setToRemoveId = (val)=> {
   idToRemove = val
 }
 const modalConfirmed = async function(val){
-	console.log('DELETE Image TOTO');
+	console.log('DELETE Image');
 	console.log('props.deleteStoreAction==',props.deleteStoreAction);
   console.log('idToRemove',idToRemove);
   console.log(idToRemove);

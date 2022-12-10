@@ -2,7 +2,7 @@
   <div>
     <h1>Dashboard</h1>
     <p></p>
-    <p>à venir</p>
+    <p>Votre panneaux de control</p>
   </div>
 </template>
 

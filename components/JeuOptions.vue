@@ -5,7 +5,7 @@
 				
 			<h4 class="card-title">Options</h4>
 			
-			<div class="blockSwitch"><label class="label" for="">Email</label><b-form-checkbox @change="saveOptions" v-model="optionsValues.email" name="email" switch class="switch"></b-form-checkbox></div>
+			<!-- <div class="blockSwitch"><label class="label" for="">Email</label><b-form-checkbox @change="saveOptions" v-model="optionsValues.email" name="email" switch class="switch"></b-form-checkbox></div> -->
 			<div class="blockSwitch"><label class="label" for="">Nom</label><b-form-checkbox @change="saveOptions" v-model="optionsValues.lastName" name="lastName" switch class="switch"></b-form-checkbox></div>
 			<div class="blockSwitch"><label class="label" for="">Prénom</label><b-form-checkbox @change="saveOptions" v-model="optionsValues.firstName" name="firstName" switch class="switch"></b-form-checkbox></div>
 			<div class="blockSwitch"><label class="label" for="">Date de naissance</label><b-form-checkbox @change="saveOptions" v-model="optionsValues.birthDate" name="birthDate" switch class="switch"></b-form-checkbox></div>
